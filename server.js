@@ -30,15 +30,6 @@ app.get("/app/users", (req, res) => {
         res.status(200).json(stmt);
 });
 
-app.get("/app/users", (req, res) => {   
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").all();
-	res.status(200).json(stmt);
-});
-
-app.post("app/users", (req, res) => {
-	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)").post();
-	const all = stmt.all();
-}
 
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
