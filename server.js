@@ -40,7 +40,7 @@ app.get("/app/user/:id", (req, res) => {
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
 app.post("/app/insert/user/:id", (req, res) => {  
-	const stmt = db.run("INSERT INTO userinfo (user, pass) VALUES (?, ?)").get();
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)").run();
 	res.status(200).json(stmt);
 });
 
