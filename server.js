@@ -27,10 +27,12 @@ app.get("/app/", (req, res, next) => {
 // READ a list of users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {   
 	const stmt = db.prepare("SELECT * FROM userinfo").all();
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").get();
 	res.status(200).json(stmt);
 });
 
+app.get("/app/users", (req, res) => {   
+	res.status(200).json(stmt);
+});
 
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
