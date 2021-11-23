@@ -31,7 +31,6 @@ app.get("/app/users", (req, res) => {
 });
 
 
-
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
 app.get("/app/user/:id", (req, res) => {   
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").all();
@@ -40,7 +39,7 @@ app.get("/app/user/:id", (req, res) => {
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
 app.post("/app/insert/user/:id", (req, res) => {  
-	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)").run();
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (newtest, 38a7744f5523335db845ff1976bf4747)").run();
 	res.status(200).json(stmt);
 });
 
