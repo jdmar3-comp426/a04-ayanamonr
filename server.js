@@ -36,14 +36,14 @@ app.get("/app/user/:id", (req, res) => {
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").all();
 	res.status(200).json(stmt);
 });
-// UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
 app.post("/app/insert/user/:id", (req, res) => {  
-	const stmt = db.prepare('INSERT INTO cats (name, age) VALUES (?, ?)').run('newtest', "38a7744f5523335db845ff1976bf4747");
+	const stmt = db.prepare('INSERT INTO userinfo (name, age) VALUES (?, ?)').run('newtest', "38a7744f5523335db845ff1976bf4747");
 	res.status(200).json(stmt);
 
 });
 
+// UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 app.patch("/app/update/user/:id", (req, res) => {  
 	const stmt = db.run("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?").get();
 	res.status(200).json(stmt);
