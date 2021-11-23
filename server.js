@@ -31,7 +31,7 @@ app.get("/app/users", (req, res) => {
 });
 
 app.get("/app/users", (req, res) => {   
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").all();
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2");
 	res.status(200).json(stmt);
 });
 
