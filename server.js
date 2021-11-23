@@ -32,7 +32,7 @@ app.get("/app/users", (req, res) => {
 
 app.get("/app/users", (req, res) => {   
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = 2").get();
-	res.status(200).json(stmt);
+	const all = stmt.all();
 });
 
 
