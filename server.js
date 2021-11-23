@@ -26,8 +26,8 @@ app.get("/app/", (req, res, next) => {
 
 // READ a list of users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {   
-	const stmt = db.prepare("SELECT * FROM userinfo").all();
-	res.status(200).json(stmt);
+	const stmt = db.prepare("SELECT * FROM userinfo");
+const all = stmt.all();
 });
 
 app.get("/app/users", (req, res) => {   
