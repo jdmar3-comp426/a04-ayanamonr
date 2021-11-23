@@ -39,6 +39,11 @@ app.get("/app/user/:id", (req, res) => {
 });
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
+app.post("/app/insert/user/:id", (req, res) => {  
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)").all();
+	res.status(200).json(stmt);
+});
+
 app.patch("/app/update/user/:id", (req, res) => {  
 	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?").all();
 	res.status(200).json(stmt);
