@@ -39,9 +39,9 @@ app.get("/app/user/:id", (req, res) => {
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
 app.post("/app/insert/user/:id", (req, res) => {  
-	const stmt = db.prepare('INSERT INTO cats (name, age) VALUES (?, ?)');
-	const info = stmt.run('newtest', "38a7744f5523335db845ff1976bf4747");
-	
+	const stmt = db.prepare('INSERT INTO cats (name, age) VALUES (?, ?)').run('newtest', "38a7744f5523335db845ff1976bf4747");
+	res.status(200).json(stmt);
+
 });
 
 app.patch("/app/update/user/:id", (req, res) => {  
