@@ -40,7 +40,7 @@ app.get("/app/user/:id", (req, res) => {
 app.post("/app/insert/user/", (req, res) => {  
 	const stmt = db.prepare('INSERT INTO userinfo (name, age) VALUES (?, ?)');
 	const info = stmt.run('newtest', "38a7744f5523335db845ff1976bf4747")
-	res.status(200).json(stmt);
+	res.status(201).json(stmt);
 
 });
 
