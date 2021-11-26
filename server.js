@@ -37,7 +37,7 @@ app.get("/app/user/:id", (req, res) => {
 	res.status(200).json(stmt);
 });
 
-app.post("/app/insert/user/:id", (req, res) => {  
+app.post("/app/insert/user/", (req, res) => {  
 	const stmt = db.prepare('INSERT INTO userinfo (name, age) VALUES (?, ?)').run('newtest', "38a7744f5523335db845ff1976bf4747");
 	res.status(200).json(stmt);
 
@@ -49,6 +49,8 @@ app.patch("/app/update/user/:id", (req, res) => {
 	res.status(200).json(stmt);
 });
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
+
+
 
 // Default response for any other request
 app.use(function(req, res){
