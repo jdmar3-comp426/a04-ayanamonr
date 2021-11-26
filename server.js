@@ -38,7 +38,8 @@ app.get("/app/user/:id", (req, res) => {
 });
 
 app.post("/app/insert/user/", (req, res) => {  
-	const stmt = db.prepare('INSERT INTO userinfo (name, age) VALUES (?, ?)').run('newtest', "38a7744f5523335db845ff1976bf4747");
+	const stmt = db.prepare('INSERT INTO userinfo (name, age) VALUES (?, ?)');
+	const info = stmt.run('newtest', "38a7744f5523335db845ff1976bf4747")
 	res.status(200).json(stmt);
 
 });
@@ -46,6 +47,7 @@ app.post("/app/insert/user/", (req, res) => {
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 app.patch("/app/update/user/:id", (req, res) => {  
 	const stmt = db.run("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?").get();
+	//const info = stmt.run('Joey', 2);
 	res.status(200).json(stmt);
 });
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
