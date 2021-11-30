@@ -10,10 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set server port
+var HTTP_PORT = 5000;
 
 // Start server
-app.listen(5000, () => {
-    console.log("Server running on port %PORT%".replace("%PORT%",5000))
+app.listen(HTTP_PORT, () => {
+    console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
 });
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
