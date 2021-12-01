@@ -22,6 +22,8 @@ app.get("/app/", (req, res, next) => {
 	res.status(200);
 });
 
+//hi where am i
+
 
 // Define other CRUD API endpoints using express.js and better-sqlite3
 
