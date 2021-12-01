@@ -35,7 +35,7 @@ app.get("/app/", (req, res, next) => {
 app.post("/app/new", (req, res) => {
 	const stmt = db.prepare('INSERT INTO userinfo (user, pass) VALUES (?, ?)')
 	const output = stmt.run(req.body.user, md5(req.body.pass));
-	res.status(201).send({"message": stmt.changes + " record created: ID " + stmt.lastInsertRowid +" (201)"})
+	res.status(201).send({"message": output.changes + " record created: ID " + output.lastInsertRowid +" (201)"})
 	// splitting up the statmenets should work
 });
 
