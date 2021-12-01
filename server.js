@@ -6,6 +6,9 @@ var db = require("./database.js")
 // Require md5 MODULE
 var md5 = require('md5')
 // Make Express use its own built-in body parser
+var bodyParser = require("body-parser");
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -30,9 +33,8 @@ app.get("/app/", (req, res, next) => {
 // CREATE a new user (HTTP method POST) at endpoint /app/new/
 
 app.post("/app/new", (req, res) => {
-	const stmt = db.prepare('INSERT INTO userinfo (user, pass) VALUES (?, ?)');
-	const info = stmt.run(req.body.user, md5(req.body.pass));
-	res.status(201).send({"message": info.changes + " record created: ID " + info.lastInsertRowid +" (201)"})
+	const stmt = db.prepare('INSERT INTO userinfo (user, pass) VALUES (?, ?)').run(req.body.user, md5(req.body.pass));
+	res.status(201).send({"message": stmt.changes + " record created: ID " + stmt.lastInsertRowid +" (201)"})
 	// splitting up the statmenets should work
 });
 
