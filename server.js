@@ -33,8 +33,8 @@ app.get("/app/", (req, res, next) => {
 // CREATE a new user (HTTP method POST) at endpoint /app/new/
 
 app.post("/app/new", (req, res) => {
-	const stmt = db.prepare('INSERT INTO userinfo (user, pass) VALUES (?, ?)')
-	const output = stmt.run(req.body.user, md5(req.body.pass));
+	let stmt = db.prepare('INSERT INTO userinfo (user, pass) VALUES (?, ?)')
+	let output = stmt.run(req.body.user, md5(req.body.pass));
 	res.status(201).send({"message": output.changes + " record created: ID " + output.lastInsertRowid +" (201)"})
 	// splitting up the statmenets should work
 });
